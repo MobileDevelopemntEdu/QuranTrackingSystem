@@ -11,9 +11,12 @@ void main(List<String> arguments) {
 
   //set the userid for testing to "1"
   var userID = "2";
-  print(group.getCurrentHatimOfUser(userID));
-  for (int i = 1; i <= 30; i++) {
+  //print(group.getCurrentHatimOfUser(userID));
+  for (int i = 1; i <= 5; i++) {
     group.completeHatimOfUser(userID);
+
   }
+
+  print(group.getNotCopleatedHatimRoundsOfUser(userID));
   print(group.getCurrentHatimOfUser(userID));
 }

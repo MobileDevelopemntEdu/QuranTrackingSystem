@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:test/expect.dart';
+
 import 'hatim_model.dart';
 
 // group status enum
@@ -212,6 +214,49 @@ class GroupModel {
       }
     }
     return allHatims;
+  }
+
+  List<String> getNotCopleatedHatimRoundsOfUser(String userID){
+    List<String> complated = [];
+
+    for (HatimRoundModel hatimRound in hatimRounds) {
+      if (hatimRound.userHatimCompleted.containsKey(userID)) {
+        if (hatimRound.userHatimCompleted[userID] == false){
+          complated.add(hatimRound.roundID.toString());
+        }
+      }
+
+    }
+    return complated;
+  }
+
+
+  List<String> getCopleatedHatimRoundsOfUser(String userID){
+    List<String> complated = [];
+
+    for (HatimRoundModel hatimRound in hatimRounds) {
+      if (hatimRound.userHatimCompleted.containsKey(userID)) {
+        if (hatimRound.userHatimCompleted[userID] == true){
+          complated.add(hatimRound.roundID.toString());
+        }
+      }
+
+    }
+    return complated;
+  }
+
+   List<String> getCopleatedHatimChatersOfUser(String userID){
+    List<String> complated = [];
+
+    for (HatimRoundModel hatimRound in hatimRounds) {
+      if (hatimRound.userHatimCompleted.containsKey(userID)) {
+        if (hatimRound.userHatimCompleted[userID] == true){
+          complated.add(hatimRound.userHatim[userID].toString());
+        }
+      }
+
+    }
+    return complated;
   }
 
   ///Write by Cengizhan
