@@ -152,6 +152,7 @@ class GroupModel {
     return 30 - usersID.length;
     }
 
+
   /// get the current hatim of the user
   int getCurrentHatimOfUser(String userID) {
     //empty int for count the hatim
@@ -178,11 +179,12 @@ class GroupModel {
     return count;
   }
 
+  ///Write by Mohammed
   /// update the hatim completion status of a user
   void completeHatimOfUser(String userID) {
     //get the current hatim that is not completed of that user
     int round = getCurrentHatimOfUser(userID);
-    print("round $round");
+   // print("round $round");
 
     //update that user in that round to true
     for (HatimRoundModel hatimRound in hatimRounds) {
@@ -192,28 +194,8 @@ class GroupModel {
     }
   }
 
-  /// get the Completed hatim of the user
-  String getCompletedHatim(String userID) {
-    ///check if the user is completed the hatim or not by looking at the userHatimCompleted if it is true
-    ///then it will return the hatims that user completed
-    ///if the user is not completed any hatim then it will return an empty string
-    ///if the user is completed all the hatim then it will return "All Hatims Completed"
-    List<HatimRoundModel> completedHatims = [];
-    for (HatimRoundModel hatimRound in hatimRounds) {
-      if (hatimRound.userHatimCompleted[userID] == true) {
-        completedHatims.add(hatimRound);
-      }
-    }
-    if (completedHatims.isEmpty) {
-      return "";
-    } else if (completedHatims.length == hatimRounds.length) {
-      return "All Hatims Completed";
-    } else {
-      return completedHatims
-          .map((hatimRound) => hatimRound.roundID.toString())
-          .join(", ");
-    }
-  }
+
+
 
   // get all hatims of the user
   List<String> getAllHatimsOfUser(String userID) {
@@ -231,6 +213,7 @@ class GroupModel {
     return allHatims;
   }
 
+  ///Write by Cengizhan
   // generate a random groupID that is max 2 numbers between 1 and 10
   static int generateRandomGroupID() {
     int id = 0;
