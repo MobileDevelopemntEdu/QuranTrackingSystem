@@ -62,8 +62,7 @@ class GroupModel {
   void assignHatim() {
     if (usersID.length == 30) {
       for (int i = 0; i < 30; i++) {
-        hatimRounds
-            .add(HatimRoundModel(roundID: round + i, userList: usersID));
+        hatimRounds.add(HatimRoundModel(roundID: round + i, userList: usersID));
       }
     }
   }
@@ -156,15 +155,17 @@ class GroupModel {
   /// get the current hatim of the user
   int getCurrentHatimOfUser(String userID) {
     //empty int for count the hatim
-    int count = 0;
+    int count = 1;
 
     // Iterate over each HatimRoundModel object in the hatimRounds list
     for (HatimRoundModel hatimRound in hatimRounds) {
       // Check if the userHatim map contains the userID as a key
       if (hatimRound.userHatimCompleted.containsKey(userID)) {
+        //print(hatimRound.userHatimData(userID));
         // Check if the user has completed the Hatim
         if (hatimRound.userHatimCompleted[userID] == true) {
           // If the user is in round 30 and has completed the Hatim, return 0
+
           if (hatimRound.roundID == 30) {
             return 30;
           }else {
